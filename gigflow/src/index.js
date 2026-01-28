@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from './serviceWorker'; // add this import
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,5 +12,7 @@ root.render(
   </React.StrictMode>
 );
 
-// Optional: keep this for performance measurement
 reportWebVitals();
+
+// UNREGISTER any active service worker
+serviceWorker.unregister();
