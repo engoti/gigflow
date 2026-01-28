@@ -13,6 +13,3 @@ root.render(
 );
 
 reportWebVitals();
-
-// UNREGISTER any active service worker
-serviceWorker.unregister();
