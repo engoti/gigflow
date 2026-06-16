@@ -77,7 +77,7 @@ function App() {
     } else {
       setHasPaid(true);
       setUserPlan('pro');
-      alert("✅ Account upgraded to Pro! Refresh if needed.");
+      alert("✅ Account upgraded to Pro! You now have full access.");
     }
     setShowPayment(false);
   };
@@ -99,31 +99,30 @@ function App() {
         hasPaid={hasPaid} 
       />
 
-      {/* === PUBLIC SECTIONS (Visible to everyone) === */}
-      {/* Features, How it Works, Testimonials, FAQ, etc. */}
+      {/* PUBLIC SECTIONS - Visible to everyone */}
+      {/* Add your Features, Pricing, How it Works, FAQ sections here */}
 
-      {/* === PROTECTED CONTENT (Only for Paid Users) === */}
+      {/* PROTECTED CONTENT */}
       {hasFullAccess ? (
         <div className="py-20 bg-slate-950">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-6">🎉 Welcome to Full Access!</h2>
-            <p className="text-xl text-slate-300">You now have Pro access. All gigs and tools are unlocked.</p>
+            <h2 className="text-4xl font-bold mb-6">🎉 Full Access Unlocked!</h2>
+            <p className="text-xl text-slate-300 mb-10">Welcome to GigFlow Pro. All features are now available.</p>
             
-            {/* Put your main GigFlow content / Dashboard here */}
-            <div className="mt-12 bg-slate-900 p-10 rounded-2xl">
-              <h3 className="text-2xl mb-4">Your Gig Leads Dashboard</h3>
-              <p className="text-slate-400">Real gig data and tools will appear here...</p>
-              {/* Add your main app content here */}
+            <div className="bg-slate-900 p-12 rounded-3xl">
+              <h3 className="text-2xl mb-6">Your Dashboard</h3>
+              <p className="text-slate-400">Real gig leads, tools, and data will be displayed here.</p>
+              {/* ← Add your main app content here later */}
             </div>
           </div>
         </div>
       ) : isLoggedIn ? (
-        <div className="py-20 text-center">
-          <h2 className="text-3xl font-bold mb-4">Upgrade Required</h2>
-          <p className="text-slate-400 mb-8">You are logged in but need to complete payment for full access.</p>
+        <div className="py-24 text-center">
+          <h2 className="text-3xl font-bold mb-4">Almost There!</h2>
+          <p className="text-slate-400 mb-8">Complete your payment to unlock full access.</p>
           <button 
             onClick={() => setShowPayment(true)}
-            className="bg-accent text-black px-10 py-4 rounded-xl font-bold text-lg"
+            className="bg-accent hover:bg-emerald-500 text-black px-12 py-4 rounded-2xl font-bold text-lg"
           >
             Upgrade to Pro Now
           </button>
@@ -134,29 +133,108 @@ function App() {
       {showPayment && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4">
           <div className="bg-slate-900 rounded-2xl p-8 md:p-10 max-w-lg w-full relative">
-            <button onClick={() => setShowPayment(false)} className="absolute top-4 right-6 text-3xl text-slate-400 hover:text-white">×</button>
+            <button
+              onClick={() => setShowPayment(false)}
+              className="absolute top-4 right-6 text-3xl text-slate-400 hover:text-white"
+            >
+              ×
+            </button>
             <h2 className="text-3xl font-bold text-center mb-8">Upgrade Your Access</h2>
-            
+
             <div className="space-y-4">
-              <a href="https://nowpayments.io/payment/?iid=6382545246" target="_blank" rel="noopener noreferrer" className="block w-full py-5 px-6 bg-slate-800 hover:bg-slate-700 rounded-xl text-center">Basic — $19</a>
-              <a href="https://nowpayments.io/payment/?iid=6313323438" target="_blank" rel="noopener noreferrer" className="block w-full py-6 px-6 bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-xl text-center font-bold">Pro — $49 (Recommended)</a>
-              <a href="https://nowpayments.io/payment/?iid=5061273629" target="_blank" rel="noopener noreferrer" className="block w-full py-5 px-6 bg-slate-800 hover:bg-slate-700 rounded-xl text-center">Elite — $99</a>
+              <a href="https://nowpayments.io/payment/?iid=6382545246" target="_blank" rel="noopener noreferrer" className="block w-full py-5 px-6 bg-slate-800 hover:bg-slate-700 rounded-xl text-center transition">
+                Basic Plan — $19
+              </a>
+              <a href="https://nowpayments.io/payment/?iid=6313323438" target="_blank" rel="noopener noreferrer" className="block w-full py-6 px-6 bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-xl text-center font-bold transition">
+                Pro Plan — $49 (Recommended)
+              </a>
+              <a href="https://nowpayments.io/payment/?iid=5061273629" target="_blank" rel="noopener noreferrer" className="block w-full py-5 px-6 bg-slate-800 hover:bg-slate-700 rounded-xl text-center transition">
+                Elite Plan — $99
+              </a>
             </div>
 
             <div className="mt-10 text-center">
-              <button onClick={handlePaymentSuccess} className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 rounded-xl font-semibold">
-                ✅ I Have Completed Payment – Activate
+              <button
+                onClick={handlePaymentSuccess}
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 rounded-xl font-semibold text-white"
+              >
+                ✅ I Have Completed Payment – Activate Account
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Login Modal - (same as before) */}
+      {/* Login Modal */}
       {showLogin && (
-        /* Keep your existing login modal code here */
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 px-4">
-          {/* ... your full login modal ... */}
+          <div className="bg-slate-900 rounded-2xl p-8 md:p-10 max-w-md w-full relative">
+            <button
+              onClick={() => setShowLogin(false)}
+              className="absolute top-5 right-6 text-3xl text-slate-400 hover:text-white transition"
+            >
+              ×
+            </button>
+
+            <h2 className="text-3xl font-bold mb-6 text-center">
+              {isLoggedIn ? "My Account" : isSignup ? "Create Account" : "Welcome Back"}
+            </h2>
+
+            {!isLoggedIn && (
+              <div className="flex mb-8 border-b border-slate-700">
+                <button
+                  onClick={() => setIsSignup(true)}
+                  className={`flex-1 py-3 font-medium transition ${isSignup ? "text-accent border-b-2 border-accent font-bold" : "text-slate-400 hover:text-slate-300"}`}
+                >
+                  Sign Up
+                </button>
+                <button
+                  onClick={() => setIsSignup(false)}
+                  className={`flex-1 py-3 font-medium transition ${!isSignup ? "text-accent border-b-2 border-accent font-bold" : "text-slate-400 hover:text-slate-300"}`}
+                >
+                  Login
+                </button>
+              </div>
+            )}
+
+            {isLoggedIn ? (
+              <div className="text-center py-8 space-y-6">
+                <p>Welcome, <strong>{user.email}</strong></p>
+                <p className="text-accent">Plan: <strong>{userPlan.toUpperCase()}</strong></p>
+                <button onClick={handleLogout} className="w-full py-4 bg-red-600 hover:bg-red-700 rounded-xl font-medium">
+                  Logout
+                </button>
+              </div>
+            ) : isSignup ? (
+              <form onSubmit={(e) => { e.preventDefault(); handleSignUp(e.target.email.value, e.target.password.value); }} className="space-y-6">
+                <div>
+                  <label className="block text-sm text-slate-300 mb-2">Email</label>
+                  <input name="email" type="email" required className="w-full p-4 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500" placeholder="you@example.com" />
+                </div>
+                <div>
+                  <label className="block text-sm text-slate-300 mb-2">Password</label>
+                  <input name="password" type="password" required className="w-full p-4 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500" placeholder="••••••••" />
+                </div>
+                <button type="submit" className="w-full py-5 bg-accent hover:bg-emerald-600 text-black font-bold rounded-xl">
+                  Create Account
+                </button>
+              </form>
+            ) : (
+              <form onSubmit={(e) => { e.preventDefault(); handleLogin(e.target.email.value, e.target.password.value); }} className="space-y-6">
+                <div>
+                  <label className="block text-sm text-slate-300 mb-2">Email</label>
+                  <input name="email" type="email" required className="w-full p-4 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500" placeholder="you@example.com" />
+                </div>
+                <div>
+                  <label className="block text-sm text-slate-300 mb-2">Password</label>
+                  <input name="password" type="password" required className="w-full p-4 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500" placeholder="••••••••" />
+                </div>
+                <button type="submit" className="w-full py-5 bg-accent hover:bg-emerald-600 text-black font-bold rounded-xl">
+                  Login
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       )}
     </div>
