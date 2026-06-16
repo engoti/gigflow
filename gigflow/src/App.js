@@ -43,7 +43,6 @@ function App() {
 
   const isLoggedIn = !!user;
 
-  // Auth Handlers
   const handleSignUp = async (email, password) => {
     const { error } = await supabase.auth.signUp({
       email,
@@ -94,7 +93,11 @@ function App() {
         onLogout={handleLogout}
       />
 
-      <Hero onUnlockClick={() => setShowPayment(true)} />
+      <Hero 
+        onUnlockClick={() => setShowPayment(true)} 
+        isLoggedIn={isLoggedIn} 
+        hasPaid={hasPaid} 
+      />
 
       {/* Payment Modal */}
       {showPayment && (
